@@ -77,15 +77,7 @@ revealElements.forEach(el => {
 });
 
 
-// ── 5. REPORT BUTTON CLICK ──
-const btnReport = document.querySelector('.btn-report');
 
-if (btnReport) {
-  btnReport.addEventListener('click', (e) => {
-    e.preventDefault();
-    alert('📸 Photo Upload feature coming soon!\n\nThis is where you will upload photos of littering to earn reward points.');
-  });
-}
 
 
 // ── 6. SMOOTH COUNTER ANIMATION (About section) ──
@@ -147,3 +139,55 @@ if(openFaq){
     if(e.target == faqModal) faqModal.style.display = "none";
   }
 }
+<script type="module"></script>
+// FIREBASE IMPORTS
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+// YOUR CONFIG (paste yours)
+const firebaseConfig = {
+  apiKey: "AIzaSyDa0hD-hg4_myX5Ny-1mWuHpGzf6lLZM-I",
+  authDomain: "clean-india-7f943.firebaseapp.com",
+  projectId: "clean-india-7f943",
+  storageBucket: "clean-india-7f943.firebasestorage.app",
+  messagingSenderId: "209967732261",
+  appId: "1:209967732261:web:c4e6fb3b40bbdd4f8991cc",
+  measurementId: "G-4JTVVXMDPN"
+};
+
+// INIT
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+// BUTTON FUNCTION
+window.uploadProof = function () {
+  document.getElementById("fileInput").click();
+};
+
+// FILE UPLOAD
+document.getElementById("fileInput").addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  try {
+    const storageRef = ref(storage, "proofs/" + Date.now() + file.name);
+    await uploadBytes(storageRef, file);
+
+    const url = await getDownloadURL(storageRef);
+
+    await addDoc(collection(db, "reports"), {
+      image: url,
+      time: new Date()
+    });
+
+    alert("✅ Uploaded successfully!");
+  } catch (err) {
+    console.error(err);
+    alert("❌ Upload failed");
+  }
+});
+document.getElementById("uploadBtn").addEventListener("click", () => {
+  document.getElementById("fileInput").click();
+});
