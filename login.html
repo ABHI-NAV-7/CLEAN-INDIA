@@ -1,23 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Clean India</title>
+
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
-<body style="display:flex;align-items:center;justify-content:center;height:100vh;background:#f4faf6;">
 
-<div style="background:white;padding:30px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.1);width:300px;">
-  <h2 style="text-align:center;">Login</h2>
+<body class="login-body">
 
-  <input type="email" placeholder="Email" style="width:100%;padding:10px;margin:10px 0;">
-  <input type="password" placeholder="Password" style="width:100%;padding:10px;margin:10px 0;">
+  <div class="login-container">
 
-  <button style="width:100%;padding:10px;background:#2e8b57;color:white;border:none;border-radius:8px;">
-    Login
-  </button>
+    <!-- LEFT SIDE -->
+    <div class="login-left">
+      <h1>CLEAN INDIA</h1>
+      <p>Helping us to Change India</p>
 
-  <p style="text-align:center;margin-top:10px;">New user? Sign up</p>
-</div>
+      <div class="login-visual">
+        🌿 Keep India Clean  
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="login-right">
+
+      <h2>Welcome Back 👋</h2>
+      <p class="login-sub">Login to continue your contribution</p>
+
+      <div class="input-box">
+        <i class="fas fa-envelope"></i>
+        <input type="email" placeholder="Email Address">
+      </div>
+
+      <div class="input-box">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="Password">
+      </div>
+
+      <button class="login-btn">Login</button>
+
+      <p class="signup-text">
+        New here? <span>Sign Up</span>
+      </p>
+
+    </div>
+
+  </div>
 
 </body>
 </html>
