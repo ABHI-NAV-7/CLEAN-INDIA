@@ -33,7 +33,7 @@
       </ul>
 
        <a href="login.html" class="btn-login">Login / Sign Up</a>
-       
+
       <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
         <span></span><span></span><span></span>
       </button>
@@ -55,14 +55,17 @@
           Upload photos of people throwing garbage or littering in public places.
           Your action today leads to a cleaner, better tomorrow.
         </p>
-        <a href="#report" class="btn-report">
-          <span class="btn-icon"><i class="fas fa-camera"></i></span>
-          <span class="btn-words">
-            <strong>Add Proof of People Throwing Garbage</strong>
-            <small>Click. Upload. Earn Rewards.</small>
-          </span>
-          <i class="fas fa-chevron-right btn-arrow"></i>
-        </a>
+        <input type="file" id="fileInput" hidden>
+<button class="btn-report" onclick="uploadProof()">
+  Upload Proof
+</button>
+  <span class="btn-icon"><i class="fas fa-camera"></i></span>
+  <span class="btn-words">
+    <strong>Add Proof of People Throwing Garbage</strong>
+    <small>Click. Upload. Earn Rewards.</small>
+  </span>
+  <i class="fas fa-chevron-right btn-arrow"></i>
+</button>
 
         <div class="hero-features">
           <div class="feature">
@@ -366,6 +369,10 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js"></script>
+
+  <script type="module" src="script.js"></script>
 </body>
 </html>
